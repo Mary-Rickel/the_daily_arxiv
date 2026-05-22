@@ -4,13 +4,6 @@ The Daily ArXiv grabs the 10 (default) latest and relevant papers from arXiv's p
 
 All repeats are skipped (tracked in `seen_papers.json`)
 
-
-## Ranking
-The Daily ArXiv Ranks queried papers by how many of your keywords appear in the title and abstract (called hits) :
-   - **Rank 1** — 5 or more keyword hits (high interest)
-   - **Rank 2** — 2–4 keyword hits (moderate interest)
-   - **Rank 3** — 1 keyword hit (low interest)
-
 ## Dependencies
 
 **Required:**
@@ -53,6 +46,12 @@ python3 ~/the_daily_arxiv/the_daily_arxiv.py --settings
 ```
 
 Opens `config.json` in TextEdit. Use double quotes ONLY. Single quotes will break the file and the code will not work.
+
+## Ranking
+The Daily ArXiv Ranks queried papers by how many of your keywords appear in the title and abstract (called hits) :
+   - **Rank 1** — 5 or more keyword hits (high interest)
+   - **Rank 2** — 2–4 keyword hits (moderate interest)
+   - **Rank 3** — 1 keyword hit (low interest)
 
 ## Commands
 
