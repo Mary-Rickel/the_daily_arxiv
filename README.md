@@ -20,7 +20,7 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 
 **Optional but highly recommended** (I can't promise the code won't bark at you without it):
 - Homebrew
-- `terminal-notifier` — `brew install terminal-notifier`
+- `terminal-notifier` (if you don't have this, run `brew install terminal-notifier`)
 
 ## Getting started
 
@@ -55,26 +55,33 @@ python3 ~/the_daily_arxiv/the_daily_arxiv.py --settings
 
 Opens `config.json` in TextEdit. Use double quotes ONLY. Single quotes will break the file and the code will not work.
 
-## All commands
+## Commands
 
- `python3 the_daily_arxiv.py --am` Runs the AM fetch manually 
- `python3 the_daily_arxiv.py --pm` Runs the PM fetch manually 
- `python3 the_daily_arxiv.py --settings` Opens editor to set keywords and config 
- `python3 the_daily_arxiv.py --check` Checks setup and prints config
- `python3 the_daily_arxiv.py --clear-seen` Reset seen-papers log (re-notifies everything)
- `bash install.sh` Install or reinstall the schedule
- `bash uninstall.sh` Remove the LaunchAgent scheduled tasks
+**Manual runs:**
+- `python3 the_daily_arxiv.py --am` — run the AM fetch now
+- `python3 the_daily_arxiv.py --pm` — run the PM fetch now
+
+**Configuration:**
+- `python3 the_daily_arxiv.py --settings` — open keyword/config editor
+- `python3 the_daily_arxiv.py --check` — check setup and print current config
+- `python3 the_daily_arxiv.py --clear-seen` — reset seen-papers log (re-notifies everything)
+
+**Installation:**
+- `bash install.sh` — install or reinstall the scheduled tasks
+- `bash uninstall.sh` — remove the LaunchAgent scheduled tasks
 
 
 ## Config reference (`config.json`)
 
-arXiv category to fetch : `category` `astro-ph.GA`  
-Terms searched in title + abstract : `keywords` 
-How many papers to fetch from arXiv: `max_papers`  `80` 
-Max banners per run: `max_notifications` `10` 
-Seconds between each notification: `delay_between` `6` 
-Only notify on keyword matches: `only_matched` `true` 
-How many days before a paper can be re-shown: `seen_expiry_days`  `7`
+| Key | Default | Description |
+|---|---|---|
+| `category` | `astro-ph.GA` | arXiv category to fetch |
+| `keywords` | — | Terms searched in title + abstract |
+| `max_papers` | `80` | How many papers to fetch from arXiv |
+| `max_notifications` | `10` | Max banners per run |
+| `delay_between` | `6` | Seconds between each notification |
+| `only_matched` | `true` | Only notify on keyword matches |
+| `seen_expiry_days` | `7` | Days before a paper can be re-shown |
 
 ## Troubleshooting
 
