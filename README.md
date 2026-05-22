@@ -94,7 +94,7 @@ Opens `config.json` in TextEdit. Use double quotes ONLY. Single quotes will brea
 - If you use a different browser, edit the `open -a "Google Chrome"` lines in the script
 
 **Seeing fewer than 10 papers**
-- Your keywords may not match enough papers — broaden them in `--settings`
+- Your keywords may not match enough papers. To fix this, try adding more by opening config.json or `--settings`
 - Or run `--clear-seen` if the seen log is filtering too aggressively
 
 ## Acknowledgements
