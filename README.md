@@ -13,15 +13,14 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 
 ## Dependencies
 
-   REQUIRED:
-      - MacOS
-      - Python 3 (standard libraries are used)
-      - Google Chrome
+**Required:**
+- macOS
+- Python 3 (standard libraries only — no pip installs needed)
+- Google Chrome
 
-   Optional but *highly* recommended (I can't promise the code won't bark at you for not having it)
-      - Homebrew
-      - `terminal-notifier` (brew install terminal-notifier)
-
+**Optional but highly recommended** (I can't promise the code won't bark at you without it):
+- Homebrew
+- `terminal-notifier` — `brew install terminal-notifier`
 
 ## Getting started
 
