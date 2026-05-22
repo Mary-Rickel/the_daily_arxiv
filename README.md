@@ -39,7 +39,8 @@ Got to System Settings → Notifications → Terminal → **Alerts**
 **3. Run the installer**
 
 ```bash
-bash install.sh
+chmod +x install.sh
+./install.sh
 ```
 After running the installer, you will be prompted with several options. Just follow along and answer the prompts as they come up. An option for a test run is included.
 
