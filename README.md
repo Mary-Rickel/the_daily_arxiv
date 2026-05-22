@@ -1,6 +1,6 @@
 # The Daily arXiv
 
-The Daily ArXiv grabs the 10 (default) latest and relevant papers to you from arXiv's public API (default category is astro-ph.GA). The code runs automatically once a day (and optionally twice a day with no repeats). Papers are ranked by interest with 1 being highest interest and 3 being lowest. The Daily ArXiv notifies via macOS notification banners and by opening a google chrome page linking to the paper.
+The Daily ArXiv grabs the 10 (default) latest and relevant papers from arXiv's public API (default category is astro-ph.GA). The code runs automatically once a day (and optionally twice a day with no repeats). Papers are ranked by interest with 1 being highest interest and 3 being lowest. The Daily ArXiv notifies via macOS notification banners and by opening a google chrome page linking to the paper.
 
 All repeats are skipped (tracked in `seen_papers.json`)
 
