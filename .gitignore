@@ -1,0 +1,6 @@
+seen_papers.json
+daily_arxiv.log
+daily_papers.html
+config.json
+*.pyc
+__pycache__/
