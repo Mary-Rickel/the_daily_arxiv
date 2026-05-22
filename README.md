@@ -15,7 +15,7 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 
 **Required:**
 - macOS
-- Python 3 (standard libraries only — no pip installs needed)
+- Python 3 (standard libraries only)
 - Google Chrome
 
 **Optional but highly recommended** (I can't promise the code won't bark at you without it):
@@ -24,9 +24,7 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 
 ## Getting started
 
-**1. Put the folder somewhere permanent**
-
-Don't run it from Downloads, move it somewhere else:
+**1. (If downloading not cloning) Put the folder somewhere permanent**
 
 ```bash
 mv ~/Downloads/the_daily_arxiv ~/the_daily_arxiv
