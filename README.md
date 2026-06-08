@@ -74,7 +74,7 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 
 | Key | Default | Description |
 |---|---|---|
-| `category` | [`astro-ph.GA`, `astro-ph.IM`] | arXiv category (or optionally categories) to fetch |
+| `category` | [`astro-ph.IM`, `astro-ph.EP`] | arXiv category (or optionally categories) to fetch |
 | `keywords` | — | Terms searched in title + abstract |
 | `max_papers` | `80` | How many papers to fetch from arXiv |
 | `max_notifications` | `10` | Max banners per run |
