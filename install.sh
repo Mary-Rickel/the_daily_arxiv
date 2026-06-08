@@ -172,7 +172,7 @@ EOF
   launchctl unload "$PM_PLIST_PATH" 2>/dev/null || true
   launchctl load -w "$PM_PLIST_PATH"
   echo "  ✓  PM run scheduled at $PM_HOUR:$(printf '%02d' $PM_MINUTE)"
-fi
+
 
 # Notification permission reminder
 echo ""
