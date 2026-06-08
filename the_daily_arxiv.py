@@ -88,7 +88,10 @@ def fetch_papers(category, max_results=80):
         f"&max_results={max_results}&start=0"
     )
     log(f"Fetching {category} (max {max_results})…")
-    with urllib.request.urlopen(url, timeout=25) as r:
+    headers = {'User-Agent': 'the_daily_arxiv/1.0 (daily paper notifier; https://github.com/Mary-Rickel/the_daily_arxiv)'}
+    time.sleep(3) ## MER added for now to deal with 429 error
+    req = urllib.request.Request(url, headers=headers) ## MER added user agent bc 429 error
+    with urllib.request.urlopen(req, timeout=30) as r:
         xml_data = r.read()
 
     ns    = {"atom": "http://www.w3.org/2005/Atom"}
@@ -116,15 +119,33 @@ def fetch_papers(category, max_results=80):
     return papers
 
 # Date filtering
+def last_business_day(d):
+    """Step back from date d to the most recent weekday."""
+    d -= timedelta(days=1)
+    while d.weekday() >= 5:  # 5=Saturday, 6=Sunday
+        d -= timedelta(days=1)
+    return d
+
 def filter_by_date(papers, run_type):
     """
-    AM run  → today and yesterday
-    PM run  → today, yesterday, and day before yesterday
-    run_type: 'am' or 'pm'
+    AM run → today (if weekday) or last business day, plus the one before
+    PM run → same but goes one day further back
+    Skips weekends entirely in the lookback window.
     """
-    now     = datetime.now(timezone.utc)
-    today   = now.date()
-    cutoff  = today - timedelta(days=1 if run_type == "am" else 2)
+    now   = datetime.now(timezone.utc)
+    today = now.date()
+
+    # If today is a weekend, treat it as the last business day
+    ref = today
+    while ref.weekday() >= 5:
+        ref -= timedelta(days=1)
+
+    # Cutoff = 1 business day back for AM, 2 for PM
+    steps = 1 if run_type == "am" else 2
+    cutoff = ref
+    for _ in range(steps):
+        cutoff = last_business_day(cutoff)
+
     filtered = [p for p in papers if p["published_date"] >= str(cutoff)]
     log(f"Date filter ({run_type.upper()}, cutoff {cutoff}): {len(filtered)} / {len(papers)} papers")
     return filtered

@@ -9,11 +9,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PYTHON_SCRIPT="$SCRIPT_DIR/the_daily_arxiv.py"
 AM_PLIST_NAME="com.thedailyarxiv.am"
 PM_PLIST_NAME="com.thedailyarxiv.pm"
-AM_PLIST_PATH="$HOME/Library/LaunchAgents/$AM_PLIST_NAME.plist"
+AM_PLIST_PATH="$HOME/Library/LaunchAgents/$AM_PLIST_NAME.plist" ## should we swithc these to LaunchDaemons at some point?
 PM_PLIST_PATH="$HOME/Library/LaunchAgents/$PM_PLIST_NAME.plist"
 
 echo ""
-echo "  ☀  The Daily arXiv — Installer"
+echo "    The Daily arXiv — Installer"
 echo "   ###################################"
 echo ""
 
@@ -54,7 +54,7 @@ AM_MINUTE=${am_min:-30}
 
 mkdir -p "$HOME/Library/LaunchAgents"
 
-cat > "$AM_PLIST_PATH" << EOF
+  cat > "$AM_PLIST_PATH" << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
   "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -69,19 +69,40 @@ cat > "$AM_PLIST_PATH" << EOF
     <string>--am</string>
   </array>
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>$AM_HOUR</integer>
-    <key>Minute</key>
-    <integer>$AM_MINUTE</integer>
-  </dict>
+  <array>
+    <dict>
+      <key>Weekday</key><integer>1</integer>
+      <key>Hour</key><integer>$AM_HOUR</integer>
+      <key>Minute</key><integer>$AM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>$AM_HOUR</integer>
+      <key>Minute</key><integer>$AM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>$AM_HOUR</integer>
+      <key>Minute</key><integer>$AM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>$AM_HOUR</integer>
+      <key>Minute</key><integer>$AM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>$AM_HOUR</integer>
+      <key>Minute</key><integer>$AM_MINUTE</integer>
+    </dict>
+  </array>
   <key>StandardErrorPath</key>
   <string>$SCRIPT_DIR/daily_arxiv.log</string>
   <key>StandardOutPath</key>
   <string>$SCRIPT_DIR/daily_arxiv.log</string>
 </dict>
 </plist>
-EOF
+EOF 
 
 launchctl unload "$AM_PLIST_PATH" 2>/dev/null || true
 launchctl load -w "$AM_PLIST_PATH"
@@ -113,12 +134,33 @@ if [[ "$add_pm" =~ ^[Yy]$ ]]; then
     <string>--pm</string>
   </array>
   <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>$PM_HOUR</integer>
-    <key>Minute</key>
-    <integer>$PM_MINUTE</integer>
-  </dict>
+  <array>
+    <dict>
+      <key>Weekday</key><integer>1</integer>
+      <key>Hour</key><integer>$PM_HOUR</integer>
+      <key>Minute</key><integer>$PM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>2</integer>
+      <key>Hour</key><integer>$PM_HOUR</integer>
+      <key>Minute</key><integer>$PM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>3</integer>
+      <key>Hour</key><integer>$PM_HOUR</integer>
+      <key>Minute</key><integer>$PM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>4</integer>
+      <key>Hour</key><integer>$PM_HOUR</integer>
+      <key>Minute</key><integer>$PM_MINUTE</integer>
+    </dict>
+    <dict>
+      <key>Weekday</key><integer>5</integer>
+      <key>Hour</key><integer>$PM_HOUR</integer>
+      <key>Minute</key><integer>$PM_MINUTE</integer>
+    </dict>
+  </array>
   <key>StandardErrorPath</key>
   <string>$SCRIPT_DIR/daily_arxiv.log</string>
   <key>StandardOutPath</key>
