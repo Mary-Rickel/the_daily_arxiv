@@ -1,5 +1,5 @@
 {
-   "category": "astro-ph.IM",
+   "category": ["astro-ph.IM", "astro-ph.EP"],
    "keywords": [
     "adaptive optics",
     "Gerchberg Saxton",

@@ -81,9 +81,10 @@ def mark_seen(seen, paper_ids):
 
 # Fetch papers from Arxiv API
 def fetch_papers(category, max_results=80):
+    categories_query = "+OR+".join([f"cat:{c}" for c in category])
     url = (
         f"https://export.arxiv.org/api/query?"
-        f"search_query=cat:{category}"
+        f"search_query={categories_query}"
         f"&sortBy=submittedDate&sortOrder=descending"
         f"&max_results={max_results}&start=0"
     )
