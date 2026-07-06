@@ -98,6 +98,7 @@ The Daily ArXiv Ranks queried papers by how many of your keywords appear in the 
 - Or run `--clear-seen` if the seen log is filtering too aggressively
 
 **Previous/different versions of an installation are running simultaneously**
+
 When you run `launchctl list | grep arxiv` you should only see `- 0 com.thedailyarxiv.pm` and `- 0 com.thedailyarxiv.am`. If 
 see more than this, as an example `-2 com.thedailyarxiv.am`, you will have to unload previous versions otherwise you will run into a query limit error "HTTP ERROR 429: Too Many Requests".
 
